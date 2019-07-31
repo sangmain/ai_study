@@ -45,9 +45,35 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 early_stopping_callback = EarlyStopping(monitor='val_loss', patience=10)
 
 history = model.fit(X_train, Y_train, validation_data=(X_test, Y_test),
-                    epochs=30, batch_size=200, verbose=1, callbacks=[early_stopping_callback])
-
+                    epochs=1, batch_size=2000, verbose=1, callbacks=[early_stopping_callback])
 
 print("\n Test Accuracy: %.4f" % (model.evaluate(X_test, Y_test)[1]))
 
+print(history.history.keys())
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+plt.title('model loss')
+plt.ylabel('loss')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
 
+plt.plot(history.history['acc'])
+plt.plot(history.history['val_acc'])
+plt.title('model acc')
+plt.ylabel('acc')
+plt.xlabel('epoch')
+plt.legend(['train', 'test'], loc='upper left')
+plt.show()
+
+plt.plot(history.history['loss'])
+plt.plot(history.history['val_loss'])
+
+plt.plot(history.history['acc'])
+plt.plot(history.history['val_acc'])
+
+plt.title('model loss, acc')
+plt.ylabel('loss, acc')
+plt.xlabel('epoch')
+plt.legend(['train loss', 'test loss', 'train acc', 'train acc'], loc='upper left')
+plt.show()

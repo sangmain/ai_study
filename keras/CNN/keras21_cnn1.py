@@ -11,6 +11,7 @@ model = Sequential()
 model.add(Conv2D(3, (3,3), input_shape=(6,6,1)))
 
 # # model.add(Conv2D(7, (2,2), padding='same', input_shape=(5,5,1)))
+
 # model.add(Conv2D(7, (2,2), padding='same', input_shape=(10,10,1)))
 # # model.add(Conv2D(16,(2,2)))
 # model.add(MaxPooling2D(3,3))
