@@ -35,8 +35,8 @@ model.compile(loss='categorical_crossentropy', optimizer='adam', metrics=['accur
 model.fit(x_train, y_train, epochs=50, batch_size=1)
 #평가하기
 y_pred = model.predict(x_test)
-
 y_pred = np.argmax(y_pred, axis=1)
+print(y_pred)
 y_pred = encoder.inverse_transform(y_pred)
 print(y_pred)
 acc = model.evaluate(x_test, y_test, batch_size=1)

@@ -1,0 +1,44 @@
+MODEL ---- DecisionTree
+최적의 매개변수 =  DecisionTreeClassifier(class_weight=None, criterion='gini', max_depth=None,
+            max_features=None, max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, presort=False, random_state=None,
+            splitter='random')
+훈련 점수:  1.0
+테스트 점수:  0.8969387755102041
+
+MODEL ---- GradientBoosting
+최적의 매개변수 =  GradientBoostingClassifier(criterion='friedman_mse', init=None,
+              learning_rate=0.1, loss='deviance', max_depth=3,
+              max_features=None, max_leaf_nodes=None,
+              min_impurity_decrease=0.0, min_impurity_split=None,
+              min_samples_leaf=1, min_samples_split=2,
+              min_weight_fraction_leaf=0.0, n_estimators=1000,
+              n_iter_no_change=None, presort='auto', random_state=None,
+              subsample=1.0, tol=0.0001, validation_fraction=0.1,
+              verbose=0, warm_start=False)
+훈련 점수:  1.0
+테스트 점수:  0.9357142857142857
+
+MODEL ---- RandomForest
+최적의 매개변수 =  RandomForestClassifier(bootstrap=True, class_weight=None, criterion='gini',
+            max_depth=None, max_features='auto', max_leaf_nodes=None,
+            min_impurity_decrease=0.0, min_impurity_split=None,
+            min_samples_leaf=1, min_samples_split=2,
+            min_weight_fraction_leaf=0.0, n_estimators=1000, n_jobs=None,
+            oob_score=False, random_state=None, verbose=0,
+            warm_start=False)
+훈련 점수:  1.0
+테스트 점수:  0.9479591836734694
+
+MODEL ---- XGB
+최적의 매개변수 =  XGBClassifier(base_score=0.5, booster='gbtree', colsample_bylevel=1,
+       colsample_bynode=1, colsample_bytree=1, gamma=0, learning_rate=0.1,
+       max_delta_step=0, max_depth=3, min_child_weight=1, missing=None,
+       n_estimators=500, n_jobs=1, nthread=None,
+       objective='multi:softprob', random_state=0, reg_alpha=0,
+       reg_lambda=1, scale_pos_weight=1, seed=None, silent=None,
+       subsample=1, verbosity=1)
+훈련 점수:  0.9887697805002552
+테스트 점수:  0.9387755102040817
