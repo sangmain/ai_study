@@ -29,17 +29,19 @@ y = newlist
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, random_state=66)
 
-kfold_cv = KFold(n_splits=5, shuffle=True)
+print(x_train.shape)
 
-parameters = {"n_estimators": [100, 500, 1000]}
+# kfold_cv = KFold(n_splits=5, shuffle=True)
 
-#학습하기
-lr = RandomForestClassifier()
-clf = RandomizedSearchCV(estimator= lr, param_distributions=parameters, cv = kfold_cv)
-clf.fit(x_train, y_train)
+# parameters = {"n_estimators": [100, 500, 1000]}
 
-print("MODEL ---- RandomForest")
+# #학습하기
+# lr = RandomForestClassifier()
+# clf = RandomizedSearchCV(estimator= lr, param_distributions=parameters, cv = kfold_cv)
+# clf.fit(x_train, y_train)
 
-print("최적의 매개변수 = ", clf.best_estimator_)
-print("훈련 점수: ", clf.score(x_train, y_train))
-print("테스트 점수: ", clf.score(x_test, y_test))
+# print("MODEL ---- RandomForest")
+
+# print("최적의 매개변수 = ", clf.best_estimator_)
+# print("훈련 점수: ", clf.score(x_train, y_train))
+# print("테스트 점수: ", clf.score(x_test, y_test))
