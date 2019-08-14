@@ -2,7 +2,7 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.svm import SVC, LinearSVC
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import accuracy_score
+from sklearn.metrics import accuracy_score  
 
 #붓꽃데이터 읽어들이기
 colnames = ['SepalLength', 'SepalWidth', 'PetalLength', 'PetalWidth', 'Name'] 

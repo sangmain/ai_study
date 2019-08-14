@@ -6,7 +6,6 @@ x_train = np.arange(1, 101)
 y_train = np.arange(501, 601)
 
 
-
 x_test = np.arange(1001, 1100)
 y_test = np.arange(1101, 1200)
 
