@@ -18,6 +18,7 @@ train = tf.train.GradientDescentOptimizer(learning_rate = 0.01).minimize(cost)
 
 #Launch the graph in a session.
 with tf.Session() as sess:
+    
     #Initializes global variables in the graph
     sess.run(tf.global_variables_initializer()) #★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★★
 

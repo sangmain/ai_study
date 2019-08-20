@@ -1,6 +1,6 @@
-######### RNN
+﻿######### RNN
 LSTM은 장기 기억을 해야할때 좋다	
-연속적인 데이터를 가지고 다음을 예측해야할
+연속적인 데이터를 가지고 다음을 예측해야할때
 
 ######### RMSE
 from sklearn.metrics import mean_squared_error
