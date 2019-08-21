@@ -23,10 +23,14 @@ print("one_hot", y_one_hot)
 y_one_hot = tf.reshape(y_one_hot, [-1, nb_classes])
 print('reshape one_hot: ', y_one_hot)
 
-w = tf.Variable(tf.random_normal([16, nb_classes]), name='weight')
-b = tf.Variable(tf.random_normal([nb_classes]), name='bias')
-
+w = tf.Variable(tf.random_normal([16, 500]), name='weight')
+b = tf.Variable(tf.random_normal([500]), name='bias')
 logits = tf.matmul(x, w) + b
+layer1 = tf.nn.softmax(logits)
+
+w = tf.Variable(tf.random_normal([500, nb_classes]), name='weight')
+b = tf.Variable(tf.random_normal([nb_classes]), name='bias')
+logits = tf.matmul(layer1, w) + b
 hypothesis = tf.nn.softmax(logits)
 
 cost = tf.reduce_mean(tf.nn.softmax_cross_entropy_with_logits_v2(
