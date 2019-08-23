@@ -11,10 +11,10 @@ b = tf.Variable(tf.random_normal([1]), name='bias')
 hypothesis = x_train * w + b
 
 # cost / loss function
-cost = tf.reduce_mean(tf.square(hypothesis - y_train))
+loss = tf.reduce_mean(tf.square(hypothesis - y_train))
 
 # optimizer
-train = tf.train.GradientDescentOptimizer(learning_rate = 0.01).minimize(cost)
+train = tf.train.GradientDescentOptimizer(learning_rate = 0.01).minimize(loss)
 
 #Launch the graph in a session.
 with tf.Session() as sess:
@@ -24,7 +24,7 @@ with tf.Session() as sess:
 
     #Fit the line
     for step in range(2001):
-        _, cost_val, w_val, b_val = sess.run([train, cost, w, b])
+        _, cost_val, w_val, b_val = sess.run([train, loss, w, b])
 
         if step % 20 == 0:
             print(step, cost_val, w_val, b_val)

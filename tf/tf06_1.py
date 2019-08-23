@@ -13,7 +13,8 @@ hypothesis = x * w + b
 cost = tf.reduce_mean(tf.square(hypothesis - y))
 
 # optimzier
-train = tf.train.GradientDescentOptimizer(learning_rate = 0.01).minimize(cost)
+optimizer = tf.train.GradientDescentOptimizer(learning_rate = 0.01)
+train = optimizer.minimize(cost)
  
 # Launch the graph in a session
 with tf.Session() as sess:

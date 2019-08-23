@@ -7,11 +7,11 @@ from keras.datasets import mnist
 (x_train, y_train),(x_test, y_test) = mnist.load_data()
 print(x_train.shape)
 
-x_train = x_train[:2000]
-y_train = y_train[:2000]
+# x_train = x_train[:2000]
+# y_train = y_train[:2000]
 
-x_test = x_test[:2000]
-y_test = y_test[:2000]
+# x_test = x_test[:2000]
+# y_test = y_test[:2000]
 
 x_train = np.array(x_train).reshape((-1,np.prod(x_train.shape[1:])))
 x_test = np.array(x_test).reshape((-1,np.prod(x_train.shape[1:])))
@@ -21,8 +21,8 @@ x_train = x_train.reshape(-1, 28,28,3)
 x_test= x_test.reshape (-1,28,28,3)
 print(x_train.shape)
 
-# input_shape = 32
-input_shape = 1
+input_shape = 32
+# input_shape = 1
 
 from keras.preprocessing.image import img_to_array, array_to_img
 x_train = np.asarray([img_to_array(array_to_img(im, scale=False).resize((input_shape,input_shape))) for im in x_train])

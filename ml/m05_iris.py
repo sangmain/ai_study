@@ -12,6 +12,7 @@ iris_data = pd.read_csv("./data/iris.csv", names= colnames, encoding='utf-8')
 y = iris_data.loc[:, "Name"]
 x = iris_data.loc[:, ["SepalLength", "SepalWidth", "PetalLength", "PetalWidth"]]
 
+print(x)
 #학습 전용과 테스트 전용 분리하기
 x_train, x_test, y_train, y_test = train_test_split(x, y, test_size = 0.2, train_size = 0.8, shuffle=True)
 

@@ -46,6 +46,7 @@ print(yhat)
 
 # from sklearn.metrics import r2_score
 
+
 # r2_y1_predict = r2_score(y_test, yhat)
 # print("R2: ", r2_y1_predict)
 

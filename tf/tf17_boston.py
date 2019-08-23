@@ -23,33 +23,36 @@ y_test = y_test.reshape(-1, 1)
 # print(x_data.shape, y_data.shape)
 # x_data = x_data.reshape(x_data.shape[0], x_data.shape[1], 1)
 
-x = tf.placeholder(tf.float32, shape=[None, 13])
-y = tf.placeholder(tf.float32, shape=[None, 1])
+x = tf.placeholder(tf.float32, [None, 13])
+y = tf.placeholder(tf.float32, [None, 1])
 
-w = tf.Variable(tf.random_normal([1]))
+w = tf.get_variable(name = 'w1', shape = [13, 8], initializer = tf.zeros_initializer())
+b = tf.Variable(tf.random_normal([8]))
+layer1 = tf.nn.leaky_relu(tf.matmul(x, w) + b)
+
+w = tf.get_variable(name = 'w2', shape = [8, 1], initializer = tf.zeros_initializer())
 b = tf.Variable(tf.random_normal([1]))
-
-hypothesis = x*w + b
+hypothesis = tf.nn.leaky_relu(tf.matmul(layer1, w) + b)
 
 cost = tf.reduce_mean(tf.square(tf.subtract(hypothesis, y)))
 
 train = tf.train.GradientDescentOptimizer(learning_rate=0.00001).minimize(cost)
 
-predicted = tf.cast(hypothesis > 0.5, dtype=tf.float32)
-accuracy = tf.reduce_mean(tf.cast(tf.equal(predicted, y), dtype=tf.float32))
+session = tf.Session()
 
-with tf.Session() as sess:
-    sess.run(tf.global_variables_initializer())
+# Initializes global variables in the graph.
+session.run(tf.global_variables_initializer())
 
-    for step in range(10001):
-        cost_val, _ = sess.run([cost, train], feed_dict={x:x_data, y:y_data})
-        if step % 200 == 0:
-            print(step, cost_val)
+for step in range(10001):
+    cost_val, hy_val, _ = session.run([cost, hypothesis, train], feed_dict = {x : x_data, y : y_data})
+    print(step, "Cost : ", cost_val, "\nPrediction : \n", hy_val)
 
-    h, c, a = sess.run([hypothesis, predicted, accuracy],
-                        feed_dict = {x: x_test, y: y_test})
-    print("\nHypothesis: ", h, "\nCorrect (Y): ", c , "\nAccuracy: ", a)
+predict = session.run([hypothesis], feed_dict = {x : x_test})
+
+predict = np.array(predict)
+y_test_reshape = y_test.reshape((-1, ))
+predict = predict.reshape((-1, ))
 
 from sklearn.metrics import r2_score
-r2_y_predict = r2_score(c, h)
+r2_y_predict = r2_score(y_test_reshape, predict)
 print("R2: ", r2_y_predict)

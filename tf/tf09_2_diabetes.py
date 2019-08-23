@@ -20,7 +20,8 @@ hypothesis = tf.sigmoid(tf.matmul(x, w) + b)
 cost = -tf.reduce_mean(y * tf.log(hypothesis) + (1 - y) * tf.log(1 - hypothesis))
 
 train = tf.train.GradientDescentOptimizer(learning_rate=0.01).minimize(cost)
-
+# 정확도 측정 (hypothesis > 0.5 기준)
+# tf.case() : true/false를 1.0/0.0 으로 반환
 predicted = tf.cast(hypothesis > 0.5, dtype=tf.float32)
 accuracy = tf.reduce_mean(tf.cast(tf.equal(predicted, y), dtype=tf.float32))
 

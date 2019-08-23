@@ -6,7 +6,7 @@ import matplotlib.pyplot as plt
 train = pd.read_csv("cheatkey.csv")
 
 end_prices = train['종가']
-
+print(type(end_prices))
 #normalize window
 seq_len = 50
 sequence_length = seq_len + 1
