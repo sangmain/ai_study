@@ -61,4 +61,4 @@ print("R2: ", r2_y_predict)
 import random
 r = random.randint(0, x_test.shape[0] - 1)
 print("Label: ", session.run(tf.argmax(y_test[r:r + 1], 1)))
-print("Prediction: ", session.run(tf.argmax(L3, 1), feed_dict = {x: x_test[r:r + 1]}))
+print("Prediction: ", session.run(tf.argmax(L3, 1), feed_dict = {x: x_test[r:r + 1]}))  
