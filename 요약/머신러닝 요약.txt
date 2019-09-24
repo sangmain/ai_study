@@ -1,4 +1,4 @@
-######### SVC, LinearSVC, KNeighborsClassifier, KNeighborsRegressor
+﻿######### SVC, LinearSVC, KNeighborsClassifier, KNeighborsRegressor
 from sklearn.svm import SVC, LinearSVC, KNeighborsClassifier, KNeighborsRegressor
 clf = SVC()
 clf.fit(x_train, y_train)
@@ -34,34 +34,6 @@ from sklearn.model_selection import GridSearchCV
 kfold_cv = KFold(n_splits=5, shuffle=True)
 clf = GridSearchCV(KNeighborsClassifier(), parameters, cv = kfold_cv)
 
-
-######### Pipeline
-from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import MinMaxScaler, StandardScaler
-
-pipe = Pipeline([("scaler", MinMaxScaler()), ('svm', SVC())])
-# from sklearn.pipeline import make_pipeline
-# pipe = make_pipeline(MinMaxScaler(), SVC(C=100))
-
-######### feature importance
-from sklearn.tree import DecisionTreeClassifier
-tree = DecisionTreeClassifier(random_state=0)
-print("특성 중요도: \n", tree.feature_importances_)
-
-def plot_feature_importances_cancer(model):
-    n_features = cancer.data.shape[1]
-    plt.barh(np.arange(n_features), model.feature_importances_, align='center')
-    plt.yticks(np.arange(n_features), cancer.feature_names)
-
-    plt.xlabel("특성 중요도")
-
-    plt.ylabel("특성")
-
-    plt.ylim(-1, n_features)
-
-plot_feature_importances_cancer(tree)
-plt.show()
-
 ######### GradientBoostingClassifier
 from sklearn.ensemble import GradientBoostingClassifier
 
@@ -88,38 +60,3 @@ def build_network(optimizer='adam'):
     model.compile(optimizer=optimizer, loss='binary_crossentropy', metrics=['accuracy'])
 
     return model
-
-
-######### np.save/load
-import numpy as np
-
-a = np.arange(10)
-print(a)
-np.save("aaa.npy", a)
-b = np.load("aaa.npy")
-print(b)
-
-######### 이미지 크기 키우기
-from keras.preprocessing.image import img_to_array, array_to_img
-x_train = np.asarray([img_to_array(array_to_img(im, scale=False).resize((input_shape,input_shape))) for im in x_train])
-x_test = np.asarray([img_to_array(array_to_img(im, scale=False).resize((input_shape,input_shape))) for im in x_test])
-
-######### VGG16 (32,32)
-conv_base = VGG16(weights="imagenet", include_top=False, input_shape=(input_shape,input_shape,3))
-######### VGG19 (32,32)
-######### ResNet50 (32,32)
-######### InceptionV3 (75,75)
-######### Xception(71,71)
-
-######### 라벨인코더
-from sklearn.preprocessing import LabelEncoder
-encoder = LabelEncoder()
-encoder.fit(y)
-y = encoder.transform(y)
-
-y = to_categorical(y).astype(int)
-
-y_pred = model.predict(x_test)
-y_pred = np.argmax(y_pred, axis=1)
-print(y_pred)
-y_pred = encoder.inverse_transform(y_pred)
